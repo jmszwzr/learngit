@@ -5,3 +5,5 @@ Git tracks changes of files.
 Hello,Total is wednesday.
 
 If you do not control your emotion, you will be it's slave.
+
+The feeling of progress every day is really cool!
