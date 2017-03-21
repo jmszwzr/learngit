@@ -1,0 +1,2 @@
+1、git branch -vv #查看所有分支
+2、git branch -va #查看本地和远程分支列表
