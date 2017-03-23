@@ -1,17 +1,17 @@
 
 ===========================  branch  ===========================
 
-1、git branch -vv  #查看所有分支
-2、git branch -av  #查看本地和远程分支列表-详细
+1、git branch -av  #查看本地和远程分支列表-详细
    git branch -a   #查看本地和远程分支列表-简单
-3、git branch -rv  #查看所有远程分支-详细
+2、git branch -rv  #查看所有远程分支-详细
    git branch -r   #查看所有远程分支-简单
-4、git remote show origin  #查看不存在对应远程分支的本地分支
-5、#拉取远程分支并创建本地分支
+3、git remote show origin  #查看不存在对应远程分支的本地分支
+4、#拉取远程分支并创建本地分支
 	1> git checkout -b [local branch-name x] origin/[remote branch-name x]  #创建本地分支x，并切换至本地分支x
 	2> git fetch origin [remote branch-name x]:[local branch-name x]  #创建本地分支
 
 ===========================  fetch  ===========================
+
 1、git fetch：相当于从远程获取最新版本到本地，不会自动merge
 [方式一]		
 git fetch origin master 			#从远程的origin的master主分支下载最新的版本到origin/master分支上
@@ -22,3 +22,11 @@ git merge origin/master 			#合并
 git fetch origin master:temp 		#从远程获取最新的版本到本地的temp分支上，并切换到temp分支
 git diff temp 						#本地分支与temp进行比较
 git merge temp 						#合并
+
+===========================  .gitignore  ===========================
+
+1、.gitignore不起作用解决
+
+git remote rm -r --cached .
+git add .
+git commit -m 'update .gitignore'
