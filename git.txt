@@ -1,2 +1,5 @@
 1、git branch -vv #查看所有分支
-2、git branch -va #查看本地和远程分支列表
+2、git branch -va #查看本地和远程分支列表-详细
+   git branch -av
+3、git branch -a  #查看本地和远程分支列表-简单
+4、git remote show origin  #查看不存在对应远程分支的本地分支
