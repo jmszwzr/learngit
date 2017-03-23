@@ -30,3 +30,7 @@ git merge temp 						#合并
 git remote rm -r --cached .
 git add .
 git commit -m 'update .gitignore'
+
+===========================  远程仓库  ===========================
+
+1、git remote rm origin 	#解除绑定的远程仓库
