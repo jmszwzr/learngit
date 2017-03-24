@@ -5,13 +5,10 @@
    git branch -a   #查看本地和远程分支列表-简单
 2、git branch -rv  #查看所有远程分支-详细
    git branch -r   #查看所有远程分支-简单
-3、git remote show origin
-				   #查看不存在对应远程分支的本地分支
+3、git remote show origin 	#查看不存在对应远程分支的本地分支
 4、#拉取远程分支并创建本地分支
-	1> git checkout -b [local branch-name x] origin/[remote branch-name x]
-				   #创建本地分支x，并切换至本地分支x
-	2> git fetch origin [remote branch-name x]:[local branch-name x]
-				   #创建本地分支
+	1> git checkout -b [local branch-name x] origin/[remote branch-name x] 	#创建本地分支x，并切换至本地分支x
+	2> git fetch origin [remote branch-name x]:[local branch-name x] 		#创建本地分支
 
 ===========================  fetch  ===========================
 
@@ -27,14 +24,11 @@ git diff temp 						#本地分支与temp进行比较
 git merge temp 						#合并
 
 2、删除远程分支
-git push origin :[remote branch-name x]
-									#推送一个空的分支给远程的分支x，作用即为删除远程仓库中之分名为x的分支
+git push origin :[remote branch-name x] 	#推送一个空的分支给远程的分支x，作用即为删除远程仓库中之分名为x的分支
 
 3、
-git push origin [local branch-name x]:master
-									#提交本地x分支作为远程的master分支
-git push origin [local branch-name dev]:dev
-									#提交本地dev分支作为远程仓库的dev分支，如果远程不存在，则自动创建分支
+git push origin [local branch-name x]:master 	#提交本地x分支作为远程的master分支
+git push origin [local branch-name dev]:dev 	#提交本地dev分支作为远程仓库的dev分支，如果远程不存在，则自动创建分支
 
 ===========================  .gitignore  ===========================
 
