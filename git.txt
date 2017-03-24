@@ -24,8 +24,7 @@ git diff temp 						#本地分支与temp进行比较
 git merge temp 						#合并
 
 2、删除远程分支
-	1> git branch -r -d origin/[remote branch-name x] 	#删除本地之分
-	2> git push origin :[remote branch-name x]			#推送一个空的分支给远程的分支x，作用即为删除远程仓库中之分名为x的分支
+git push origin :[remote branch-name x]			#推送一个空的分支给远程的分支x，作用即为删除远程仓库中之分名为x的分支
 
 ===========================  .gitignore  ===========================
 
