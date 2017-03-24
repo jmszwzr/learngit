@@ -25,7 +25,7 @@ PS:设置别名时，将前面的git去掉，后面的部分用双引号括起�
 '%aN': mailmap的作者名字 (.mailmap对应，详情参照git-shortlog(1)或者git-blame(1))  
 '%ae': 作者邮箱  
 '%aE': 作者邮箱 (.mailmap对应，详情参照git-shortlog(1)或者git-blame(1))  
-'%ad': 日期 (--date= 制定的格式)  
+'%ad': 日期 (--date= 制定的格式，如：--date=format:%y-%m-%d\ %H:%M:%S 或者是 relative,local,default,iso,rfc 其中之一。制定的日期格式写在最后)  
 '%aD': 日期, RFC2822格式  
 '%ar': 日期, 相对格式(1 day ago)  
 '%at': 日期, UNIX timestamp  
