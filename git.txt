@@ -26,9 +26,13 @@ git merge temp 						#合并
 2、删除远程分支
 git push origin :[remote branch-name x] 	#推送一个空的分支给远程的分支x，作用即为删除远程仓库中之分名为x的分支
 
-3、
+3、将本地分支推送至远程仓库
 git push origin [local branch-name x]:master 	#提交本地x分支作为远程的master分支
 git push origin [local branch-name dev]:dev 	#提交本地dev分支作为远程仓库的dev分支，如果远程不存在，则自动创建分支
+
+4、git远程删除分支后，本地git branch -a已然能看到的解决办法
+	1> git remote show origin 	#本地能查到但远程已不存在的分支信息
+	2> git remote prune origin 	#删除远程仓库不存在的分支
 
 ===========================  .gitignore  ===========================
 
