@@ -1,7 +1,7 @@
 
 # 以指定格式显示提交历史
 ## lg
-git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d% %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+git log --color --graph --pretty=format:'%Cred%h%Creset - %C(yellow)%d% %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 ## ld
 git log --color --graph --pretty=format:'%Cred%h%Creset - %C(yellow)%d% %s %Cgreen(%cr)%C(#00FFFF)(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
