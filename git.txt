@@ -55,3 +55,25 @@ git commit -m 'fixed unstracked files'
 ===========================  远程仓库  ===========================
 
 1、git remote rm origin 	#解除绑定的远程仓库
+
+===========================  标签管理  ===========================
+1、创建标签
+git tag v1.0			#新建一个标签，默认为HEAD
+git tag					#查看所有标签
+git log --pretty=oneline --abbrev-commit
+						#查找历史提交的commit id
+git tag v0.9 76a270a	#给相对应commit id进行定位打标签
+git show v1.0			#查看标签信息
+git tag -a v1.0 -m 'version 1.0 released' 75a270a
+						#创建带有说明的标签，用-a指定标签名，-m指定说明文字
+git tag -s v1.0 -m "signed version 0.2 released" 74a270a
+						#用PGP签名标签
+2、操作标签
+git tag -d v1.0			#删除标签[未推送到远程]
+git push origin v1.0	#推送标签到远程
+git push origin --tags	#一次性推送全部尚未推送到远程的本地标签
+
+已推送到远程的标签删除方法
+git tag -d v1.0			#先从本地删除
+git push origin :refs/tags/v1.0
+						#删除一个远程标签
