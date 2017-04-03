@@ -77,3 +77,8 @@ git push origin --tags	#一次性推送全部尚未推送到远程的本地标�
 git tag -d v1.0			#先从本地删除
 git push origin :refs/tags/v1.0
 						#删除一个远程标签
+
+3、查询远程tags、heads
+git ls-remote --heads origin	#查询远程的heads
+git ls-remote --tags origin		#查询远程的tags
+git ls-remote origin			#查询远程的heads和tags
