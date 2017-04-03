@@ -5,14 +5,16 @@
 
 ===========================  branch  ===========================
 
+0、git branch      #查询本地存在的branch
 1、git branch -av  #查看本地和远程分支列表-详细
    git branch -a   #查看本地和远程分支列表-简单
 2、git branch -rv  #查看所有远程分支-详细
    git branch -r   #查看所有远程分支-简单
-3、git remote show origin 	#查看不存在对应远程分支的本地分支
+3、git remote show origin 		#查看不存在对应远程分支的本地分支
 4、#拉取远程分支并创建本地分支
 	1> git checkout -b [local branch-name x] origin/[remote branch-name x] 	#创建本地分支x，并切换至本地分支x
 	2> git fetch origin [remote branch-name x]:[local branch-name x] 		#创建本地分支
+5、git branch -d -r origin/dev	#删除远程的dev分支
 
 ===========================  fetch  ===========================
 
@@ -34,7 +36,7 @@ git push origin :[remote branch-name x] 	#推送一个空的分支给远程的�
 git push origin [local branch-name x]:master 	#提交本地x分支作为远程的master分支
 git push origin [local branch-name dev]:dev 	#提交本地dev分支作为远程仓库的dev分支，如果远程不存在，则自动创建分支
 
-4、git远程删除分支后，本地git branch -a已然能看到的解决办法
+4、git远程删除分支后，本地git branch -a依然能看到的解决办法
 	1> git remote show origin 	#本地能查到但远程已不存在的分支信息
 	2> git remote prune origin 	#删除远程仓库不存在的分支
 
@@ -73,12 +75,23 @@ git tag -d v1.0			#删除标签[未推送到远程]
 git push origin v1.0	#推送标签到远程
 git push origin --tags	#一次性推送全部尚未推送到远程的本地标签
 
-已推送到远程的标签删除方法
-git tag -d v1.0			#先从本地删除
-git push origin :refs/tags/v1.0
-						#删除一个远程标签
+git push origin :refs/tags/v1.0 #删除一个远程标签
+git show-ref --tag | awk '/(.*)(\s+)(.*)$/ {print ":" $2}' | xargs git push origin
+								#删除远端所有的tag，如果希望删除符合条件的，应该修改awk指令的正则表达式
+git tag -l | awk '/^(.*)$/ {print $1}'  | xargs git tag -d [or]
+git tag -l | awk '/^(.*)$/'  | xargs git tag -d
+								#删除本地所有tags[使用git show-ref --tag将无法准确获取远程端的tags，但远程tags存在]
+git tag -l | awk '/^(v1.*)$/'  | xargs git tag -d
+								#删除本地所有v1.x命名的tags
+
+git fetch origin tag <tagname>	#获取远程指定的tag
+git fetch origin --tags			#获取远程所有的tags[可以不加s，即 gitfetch origin --tag]
 
 3、查询远程tags、heads
-git ls-remote --heads origin	#查询远程的heads
-git ls-remote --tags origin		#查询远程的tags
+git ls-remote --heads [origin]	#查询远程的heads
+git ls-remote --tags [origin]	#查询远程所有的tags
 git ls-remote origin			#查询远程的heads和tags
+
+git show-ref --tag 				#查询远程所有的tags[有时候不准确]
+
+
