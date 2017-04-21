@@ -1,7 +1,7 @@
 
 ===========================  First clone  ===========================
 1、添加公钥
-2、ssh -T git@oschina.net 		#测试是否连接成功,输入yes后,终端提示 `Welcome to Git@OSC, xxx!` 说明连接成功
+2、ssh -T git@git.oschina.net 		#测试是否连接成功,输入yes后,终端提示 `Welcome to Git@OSC, xxx!` 说明连接成功
 
 ===========================  branch  ===========================
 
