@@ -18,6 +18,7 @@
 5、git branch -d -r origin/dev	#删除远程的dev分支
 
 ===========================  push  ===========================
+
 1、git push -f os master  #强制推送本地至远程仓库（如发生推送超时，检查端口是否被防火墙拦截）
 
 
@@ -59,12 +60,25 @@ git rm --cached director/filename  or git rm --chched filename
 git add .
 git commit -m 'fixed unstracked files'
 
-===========================  远程仓库  ===========================
+===========================  远程仓库 | 多个远程仓库 ===========================
 
 1、git remote rm origin 	#解除绑定的远程仓库
 2、本地仓库版本回退一个版本之后，一本地仓库为主，更新远程仓库
 	git reset HEAD^  or  git reset --hard HEAD^  or git reset --hard 4581672
 	git push -f origin master
+
+3、多个远程仓库，统一推送
+添加：
+git remote add all git@git.coding.net:test/Test.git
+git remote set-url --add all git@git.oschina.net:test/test.git
+推送：
+git push all
+
+4、多个远程仓库，分别推送
+添加：
+git remote add os git@git.oschina.net:test/test.git
+推送：
+git push [-u][-f] os master	#[首次推送][强制推送]
 
 ===========================  标签管理  ===========================
 1、创建标签
