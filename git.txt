@@ -17,6 +17,10 @@
 	2> git fetch origin [remote branch-name x]:[local branch-name x] 		#创建本地分支
 5、git branch -d -r origin/dev	#删除远程的dev分支
 
+===========================  push  ===========================
+1、git push -f os master  #强制推送本地至远程仓库（如发生推送超时，检查端口是否被防火墙拦截）
+
+
 ===========================  fetch  ===========================
 
 1、git fetch：相当于从远程获取最新版本到本地，不会自动merge
