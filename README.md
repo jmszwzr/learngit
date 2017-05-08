@@ -1,8 +1,14 @@
 ![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png "GitHub Mark")  
-　　　　　　　　　　　　　　　　　　　　　　　　　　　　<img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" style="width:100;hspace:100;">
+<div align=center>
+<img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" style="width:30%;" /><br> 
+<img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" width="100" />
+</div>
 
-**学习地址**
-[Git Community Book 中文版](http://gitbook.liuhui998.com/)
+**学习资料**  
+[**Git Community Book 中文版**](http://gitbook.liuhui998.com/)    
+
+[**Public Git hosting sites**](https://git.wiki.kernel.org/index.php/GitHosting)  
+
 ----------
 
 # Git学习和使用
