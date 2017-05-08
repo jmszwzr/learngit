@@ -1,3 +1,10 @@
+![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png "GitHub Mark")  
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　<img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" style="width:100;hspace:100;">
+
+**学习地址**
+[Git Community Book 中文版](http://gitbook.liuhui998.com/)
+----------
+
 # Git学习和使用
 
 ## 用户信息
@@ -127,11 +134,11 @@
 - --committer 仅显示指定提交者相关的提交。  
 - --grep 仅显示含指定关键字的提交  
 - -S 仅显示添加或移除了某个关键字的提交  
-
+>
 >>**例子**  
->git log --pretty="%h - %s" --author=gitster --since="2008-10-01" \
+>>git log --pretty="%h - %s" --author=gitster --since="2008-10-01" \
    --before="2008-11-01" --no-merges -- t/  
->查看Git仓库中，2008年10月期间，Junio Hamano 提交的但未合并的测试文件
+>>查看Git仓库中，2008年10月期间，Junio Hamano 提交的但未合并的测试文件
 
 ### <font color="#F44D27">撤销操作</font>
 	git add <file>	
@@ -160,6 +167,7 @@
 #### 查看远程仓库
 	git remote show origin	
 >- 它同样会列出远程仓库的 URL 与跟踪分支的信息。 这些信息非常有用，它告诉你正处于 master 分支，并且如果运行 git pull，就会抓取所有的远程引用，然后将远程 master 分支合并到本地 master 分支。 它也会列出拉取到的所有远程引用。  
+>
 - 这个命令列出了当你在特定的分支上执行 git push 会自动地推送到哪一个远程分支。 它也同样地列出了哪些远程分支不在你的本地，哪些远程分支已经从服务器上移除了，还有当你执行 git pull 时哪些分支会自动合并。
 #### 远程仓库的移除与重命名
 	git remote rename origin coding		origin/master -->  coding/master
@@ -170,11 +178,7 @@
 	git tag		列出所有标签
 	git tag -l 'v1.8.5*'	列出1.8.5系列的版本
 #### 创建标签
->Git 使用两种主要类型的标签：轻量标签（lightweight）与附注标签（annotated）。  
->
-一个轻量标签很像一个不会改变的分支 - 它只是一个特定提交的引用。
-
->然而，附注标签是存储在 Git 数据库中的一个完整对象。 它们是可以被校验的；其中包含打标签者的名字、电子邮件地址、日期时间；还有一个标签信息；并且可以使用 GNU Privacy Guard （GPG）签名与验证。 通常建议创建附注标签，这样你可以拥有以上所有信息；但是如果你只是想用一个临时的标签，或者因为某些原因不想要保存那些信息，轻量标签也是可用的。 
+>Git 使用两种主要类型的标签：轻量标签（lightweight）与附注标签（annotated）。一个轻量标签很像一个不会改变的分支 - 它只是一个特定提交的引用。然而，附注标签是存储在 Git 数据库中的一个完整对象。 它们是可以被校验的；其中包含打标签者的名字、电子邮件地址、日期时间；还有一个标签信息；并且可以使用 GNU Privacy Guard （GPG）签名与验证。 通常建议创建附注标签，这样你可以拥有以上所有信息；但是如果你只是想用一个临时的标签，或者因为某些原因不想要保存那些信息，轻量标签也是可用的。 
 
 #### 附注标签
 	git tag -a v1.0 -m 'version 1.0'
@@ -264,10 +268,111 @@
 [**分支开发工作流**](https://www.git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81)
 
 ### <font color="#F44D27">远程分支</font>
+\-- [远程分支详解](https://www.git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF>
+)
+
+- **远程引用**是对远程仓库的引用（指针），包括分支、标签等等。 你可以通过 git ls-remote (remote) 来显式地获得远程引用的完整列表，或者通过 git remote show (remote) 获得远程分支的更多信息。 然而，一个更常见的做法是利用远程跟踪分支。
+- **远程跟踪分支**是远程分支状态的引用。 它们是你不能移动的本地引用，当你做任何网络通信操作时，它们会自动移动。 远程跟踪分支像是你上次连接到远程仓库时，那些分支所处状态的书签。它们以 (remote)/(branch) 形式命名。
+- 例子：假设你的网络里有一个在 git.ourcompany.com 的 Git 服务器。 如果你从这里克隆，Git 的 clone 命令会为你自动将其命名为 origin，拉取它的所有数据，创建一个指向它的 master 分支的指针，并且在本地将其命名为 origin/master。 Git 也会给你一个与 origin 的 master 分支在指向同一个地方的本地 master 分支，这样你就有工作的基础。
+- “origin” 并无特殊含义  
+远程仓库名字 “origin” 与分支名字 “master” 一样，在 Git 中并没有任何特别的含义一样。 同时 “master” 是当你运行 git init 时默认的起始分支名字，原因仅仅是它的广泛使用，“origin” 是当你运行 git clone 时默认的远程仓库名字。 如果你运行 git clone -o booyah，那么你默认的远程分支名字将会是 booyah/master。　　
+
+	git fetch origin　
+>这个命令查找 “origin” 是哪一个服务器（在本例中，它是 git.ourcompany.com），从中抓取本地没有的数据，并且更新本地数据库，移动 origin/master 指针指向新的、更新后的位置。   
+![remote -branch](https://www.git-scm.com/book/en/v2/images/remote-branches-3.png)
+
+#### 推送
+	git push origin dev		推送本地的 dev 分支来更新远程仓库上的 dev 分支。
+	git push origin dev:dev		同上
+	git push origin dev:server-dev		同上，只是将远程分支命名为 server-dev
+#### 抓取
+	git fetch origin	从服务器上抓取数据
+	git merge origin/master	合并到当前所在的分支
+	git checkout -b master origin/master	这会创建一个用于工作的本地分支，并且起点位于 origin/master
+
+#### 跟踪分支
+>
+- 从一个远程跟踪分支检出一个本地分支会自动创建一个叫做 “跟踪分支”（有时候也叫做 “上游分支”）。
+- 跟踪分支是与远程分支有直接关系的本地分支。 如果在一个跟踪分支上输入 git pull，Git 能自动地识别去哪个服务器上抓取、合并到哪个分支。
+
+	git checkout -b dev origin/dev
+	git checkout --track origin/dev	作用同上
+	git checkout -b sf origin/dev	将本地分支与远程分支设置为不同的名字，本地分支 sf 会自动从 origin/dev拉取
+
+	git branch -u origin/serverfix
+- 设置已有的本地分支跟踪一个刚刚拉取下来的远程分支，或者想要修改正在跟踪的上游分支，你可以在任意时间使用 -u 或 --set-upstream-to 选项运行 git branch 来显式地设置。
+
+>
+上游快捷方式  
+当设置好跟踪分支后，可以通过 @{upstream} 或 @{u} 快捷方式来引用它。 所以在 master 分支时并且它正在跟踪 origin/master 时，如果愿意的话可以使用 git merge @{u} 来取代 git merge origin/master。
+
+	git branch -vv	查看本地设置的所有跟踪分支。这会将所有的本地分支列出来并且包含更多的信息，如每一个分支正在跟踪哪个远程分支与本地分支是否是领先、落后或是都有。
+	git branch -av	查看包括远程在内的所有分支情况(数据中的数值来自于从每个服务器上最后一次抓取的数据，这些数据存在于本地缓存的服务器上)
+	git fetch --all; git branch -vv	统计最新的领先与落后数字
+
+#### 抓取
+>
+- 当 git fetch 命令从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。 它只会获取数据然后让你自己合并。然而，有一个命令叫作 git pull 在大多数情况下它的含义是一个 git fetch 紧接着一个 git merge 命令。 如果有一个像之前章节中演示的设置好的跟踪分支，不管它是显式地设置还是通过 clone 或 checkout 命令为你创建的，git pull 都会查找当前
+- 分支所跟踪的服务器与分支，从服务器上抓取数据然后尝试合并入那个远程分支。
+- 由于 git pull 的魔法经常令人困惑所以通常单独显式地使用 fetch 与 merge 命令会更好一些。
+
+#### 删除远程分支
+	git push origin --delete dev	从服务器上删除 dev 分支
+	git push origin :dev	同上，只是推送一个空的分支到远程 dev 分支上，相当于删除
+
+### <font color="#F44D27">[变基](https://www.git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA)</font>
+- 在 Git 中整合来自不同分支的修改主要有两种方法：merge 以及 rebase。
+- 变基使得提交历史更加整洁。你在查看一个经过变基的分支的历史记录时会发现，尽管实际的开发工作是并行的，但它们看上去就像是串行的一样，提交历史是一条直线没有分叉。
+- 一般我们这样做的目的是为了确保在向远程分支推送时能保持提交历史的整洁
+- 请注意，无论是通过变基，还是通过三方合并，整合的最终结果所指向的快照始终是一样的，只不过提交历史不同罢了。
+- 变基是将一系列提交按照原有次序依次应用到另一分支上，而合并是把最终结果合在一起。
+
+#### 变基的基本操作	
+	git checkout dev
+	git rebase master	以 master 所在的位置作为基底，将 dev 分支上的所有修改都移至 master 分支上
+	git checkout master		回到 master 分支，进行一次快进合并
+	git merge dev
+>
+- 它的原理是首先找到这两个分支的最近共同祖先，然后对比当前分支相对于该祖先的历次提交，提取相应的修改并存为临时文件，然后将当前分支指向目标基底, 最后以此将之前另存为临时文件的修改依序应用。
+- 请注意，无论是通过变基，还是通过三方合并，整合的最终结果所指向的快照始终是一样的，只不过提交历史不同罢了。 变基是将一系列提交按照原有次序依次应用到另一分支上，而合并是把最终结果合在一起。
+
+#### 更有趣的变基例子
+	git rebase --onto master server client
+>
+以上命令的意思是：“取出 client 分支，找出处于 client 分支和 server 分支的共同祖先之后的修改，然后把它们在 master 分支上重放一遍”。 这理解起来有一点复杂，不过效果非常酷。  
+
+	git checkout master
+	git merge client
+>截取特性分支上的另一个特性分支，然后变基到其他分支,现在可以快进合并 master 分支了。快进合并 master 分支，使之包含来自 client 分支的修改  
+
+	git rebase master server
+	git checkout master
+	git merge server
+>
+接下来你决定将 server 分支中的修改也整合进来。 使用 git rebase [basebranch] [topicbranch] 命令可以直接将特性分支（即本例中的 server）变基到目标分支（即 master）上。这样做能省去你先切换到 server 分支，再对其执行变基命令的多个步骤。
+
+#### 变基的风险
+>**遵守一条准则**
+>>- 不要对在你的仓库外有副本的分支执行变基。
+
+>变基操作的实质是丢弃一些现有的提交，然后相应地新建一些内容一样但实际上不同的提交。
+
+	git pull --rebase	此条命令同下面两条
+	
+	git fetch origin
+	git rebase origin/master
+>
+- 如果你习惯使用 git pull ，同时又希望默认使用选项 --rebase，你可以执行这条语句 git config --global pull.rebase true 来更改 pull.rebase 的默认配置。  
+- 只要你把变基命令当作是在推送前清理提交使之整洁的工具，并且只在从未推送至共用仓库的提交上执行变基命令，就不会有事。 假如在那些已经被推送至共用仓库的提交上执行变基命令，并因此丢弃了一些别人的开发所基于的提交，那你就有大麻烦了，你的同事也会因此鄙视你。  
+- 如果你或你的同事在某些情形下决意要这么做，请一定要通知每个人执行 git pull --rebase 命令，这样尽管不能避免伤痛，但能有所缓解。
+
+#### 变基 vs 合并
+- 总的原则是，只对尚未推送或分享给别人的本地修改执行变基操作清理历史，从不对已推送至别处的提交执行变基操作
+
+## [服务器上的Git](https://www.git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E5%8D%8F%E8%AE%AE)
+
+### [配置服务器](https://www.git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8)
 
 
 
 
-
-
-![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png "GitHub Mark")  
