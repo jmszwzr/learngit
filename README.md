@@ -436,6 +436,13 @@
 	git describe master	由最近的标签名、自该标签之后的提交数目和你所描述的提交的部分 SHA-1 值构成
 >注意 git describe 命令只适用于有注解的标签（即使用 -a 或 -s 选项创建的标签），所以如果你在使用 git describe 命令的话，为了确保能为标签生成合适的名称，打发布标签时都应该采用加注解的方式。 你也可以使用这个字符串来调用 checkout 或 show 命令，但是这依赖于其末尾的简短 SHA-1 值，因此不一定一直有效。 比如，最近 Linux 内核为了保证 SHA-1 值对象的唯一性，将其位数由 8 位扩展到了 10 位，导致以前的 git describe 输出全部失效。
 
+#### 准备一次发布
+	git archive master --prefix='project/' | gzip > `git describe master`.tar.gz
 
+	git archive master --prefix='project/' --format=zip > `git describe master`.zip	创建一个 zip 压缩包
 
+#### 查看提交简报
+	git shortlog --no-merges master --not v1.0	给出上次发布v1.0以来所有提交的总结，并且已经按照作者分好组
+	git shortlog --no-merges master --not a1beba6	给出自 a1beba6 提交以来的总结
 
+## GitHub
