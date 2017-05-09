@@ -115,6 +115,7 @@
 	git log -p	用来显示每次提交的内容差异
 	git log -p -2	用来显示最近两次提交差异
 	git log --stat	显示每次提交的简略的统计信息
+	git log master..origin/master	master分时和本地最后一次连接服务器时的远程分支进行比较，查看有哪些变化
 
 
 >**git log 的常用选项**
@@ -269,6 +270,7 @@
 	git branch -d dev	删除已经合并到当前HEAD上的dev分支
 	git branch -D dev	强制删除dev分支并丢掉那些工作
 
+	git remote prune origin	删除在远程仓库中已经不存在的分支
 ### <font color="#F44D27">分支开发工作流</font>
 
 [**分支开发工作流**](https://www.git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81)
@@ -306,7 +308,7 @@
 	git checkout -b sf origin/dev	将本地分支与远程分支设置为不同的名字，本地分支 sf 会自动从 origin/dev拉取
 
 	git branch -u origin/serverfix
-- 设置已有的本地分支跟踪一个刚刚拉取下来的远程分支，或者想要修改正在跟踪的上游分支，你可以在任意时间使用 -u 或 --set-upstream-to 选项运行 git branch 来显式地设置。
+- 设置已有的本地分支跟踪一个刚刚拉取下来的远程分支，或者想要修改正在跟踪的上游分支，你可以在任意时间使用 -u(--set-upstream 的简写) 或 --set-upstream-to 选项运行 git branch 来显式地设置。
 
 >
 上游快捷方式  
@@ -314,7 +316,8 @@
 
 	git branch -vv	查看本地设置的所有跟踪分支。这会将所有的本地分支列出来并且包含更多的信息，如每一个分支正在跟踪哪个远程分支与本地分支是否是领先、落后或是都有。
 	git branch -av	查看包括远程在内的所有分支情况(数据中的数值来自于从每个服务器上最后一次抓取的数据，这些数据存在于本地缓存的服务器上)
-	git fetch --all; git branch -vv	统计最新的领先与落后数字
+	git fetch --all or git fetch or git fetch origin
+	git branch -vv	统计最新的领先与落后数字
 
 #### 抓取
 >
@@ -378,6 +381,60 @@
 ## [服务器上的Git](https://www.git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E5%8D%8F%E8%AE%AE)
 
 ### [配置服务器](https://www.git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8)
+
+
+## 分布式Git
+
+### <font color="#F44D27">向一个项目贡献</font>
+
+#### 提交准则
+	git diff --check	提交前，运行它，它将会找到可能的空白错误并将它们为你理列出来
+
+#### 私有小型团队
+![一个简单的多人 Git 工作流程的通常事件顺序](https://www.git-scm.com/book/en/v2/images/small-team-flow.png)  
+
+#### 私有管理团队
+![管理团队工作流程的基本顺序](https://www.git-scm.com/book/en/v2/images/managed-team-flow.png)
+
+
+### <font color="#F44D27">维护项目</font>
+
+#### 在特性分支中工作
+	git branch featureA master	基于 master 分支建立特性分支
+	git checkout -b featureA master	基于 master 分支建立特性分支，并立刻切换到新分支上
+#### 检出远程分支
+	git remote add jessica git://github.com/jessica/myproject.git
+	git fetch jessica
+	git checkout -b rubyclient jessica/ruby-client
+
+	git pull https://github.com/onetimeguy/project 执行一个一次性的抓取，而不会将该 URL 存为远程引用
+
+#### 确定引入了哪些东西
+	git log contrib --not master
+	git log -p contrib --not master	在每次提交后面附加对应的差异（diff）
+>假设贡献者向你发送了两个补丁，为此你创建了一个名叫 contrib 的分支并在其上应用补丁,对该分支中所有 master 分支尚未包含的提交进行检查。通过在分支名称前加入 --not 选项，你可以排除 master 分支中的提交。
+
+	git merge-base contrib master	手工找出contrib与master的公共祖先
+	36c7dba2c95e6bbb78dfa822519ecfec6e1ca649
+	git diff 36c7db
+
+	git diff master...contrib	作用同上
+>
+- 三点语法。 对于 diff 命令来说，你可以通过把 ... 置于另一个分支名后来对该分支的最新提交与两个分支的共同祖先进行比较
+- 该命令仅会显示自当前特性分支与 master 分支的共同祖先起，该分支中的工作。 这个语法很有用，应该牢记。
+
+#### 变基与拣选工作流
+	git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
+>只希望分支上的 e43a6 拉取到 master 分支，而不希望拉取 e43a6 之后的提交
+
+#### Rerere
+>Rerere 是“重用已记录的冲突解决方案（reuse recorded resolution）”的意思——它是一种简化冲突解决的方法。 当启用 rerere 时，Git 将会维护一些成功合并之前和之后的镜像，当 Git 发现之前已经修复过类似的冲突时，便会使用之前的修复方案，而不需要你的干预。  
+
+	git config --global rerere.enabled true 现在每当你进行一次需要解决冲突的合并时，解决方案都会被记录在缓存中，以备之后使用
+
+#### 生成一个构建号
+	git describe master	由最近的标签名、自该标签之后的提交数目和你所描述的提交的部分 SHA-1 值构成
+>注意 git describe 命令只适用于有注解的标签（即使用 -a 或 -s 选项创建的标签），所以如果你在使用 git describe 命令的话，为了确保能为标签生成合适的名称，打发布标签时都应该采用加注解的方式。 你也可以使用这个字符串来调用 checkout 或 show 命令，但是这依赖于其末尾的简短 SHA-1 值，因此不一定一直有效。 比如，最近 Linux 内核为了保证 SHA-1 值对象的唯一性，将其位数由 8 位扩展到了 10 位，导致以前的 git describe 输出全部失效。
 
 
 
