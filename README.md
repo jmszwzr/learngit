@@ -3,6 +3,7 @@
 <img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" style="width:30%;" /><br> 
 <img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" width="100" />
 </div>
+![Git Logo](https://www.git-scm.com/images/logo@2x.png)
 
 **学习资料**  
 [**Git Community Book 中文版**](http://gitbook.liuhui998.com/)    
@@ -445,4 +446,4 @@
 	git shortlog --no-merges master --not v1.0	给出上次发布v1.0以来所有提交的总结，并且已经按照作者分好组
 	git shortlog --no-merges master --not a1beba6	给出自 a1beba6 提交以来的总结
 
-## GitHub
+
