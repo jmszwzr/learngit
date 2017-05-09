@@ -6,7 +6,9 @@
 ![Git Logo](https://www.git-scm.com/images/logo@2x.png)
 
 **学习资料**  
-[**Git Community Book 中文版**](http://gitbook.liuhui998.com/)    
+
+- [**Git Community Book 中文版**](http://gitbook.liuhui998.com/)
+- [**Git常用命令速查表**](http://blog.devzeng.com/images/github_code_repository/Git_Cheat_Sheet.png)
 
 [**Public Git hosting sites**](https://git.wiki.kernel.org/index.php/GitHosting)  
 
