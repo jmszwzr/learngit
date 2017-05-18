@@ -153,6 +153,10 @@
 ### <font color="#F44D27">撤销操作</font>
 	git add <file>	
 	git commit --amend	添加文件，尝试重新提交，并且调用自身的编辑器修改修改提交信息
+	git commit --amend -m <message>	直接对最后一次提交的信息进行修改
+
+	git reset --soft HEAD^	回退到最后一次提交前的状态，已add未commit
+	git commit -m <message>	重新提交即可修改因最后一次提交写错的描述信息
 
 	git reset HEAD <file>	取消暂存文件
 	git checkout -- <file>	撤销文件所做的修改
