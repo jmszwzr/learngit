@@ -72,6 +72,9 @@
 	git grep -e '#define' --and \( -e PATH -e MAX \) 
 >查找出符合一个条件(term)且符合两个条件(terms)之一的文件行.　例如我们要找出名字中含有‘PATH'或是'MAX'的常量定义
 
+	git log [-p] | grep "Pro-git"
+> 在提交说明中查找含有"Pro-git"的提交说明
+
 ## Git的撤销操作 - 重置(reset)，签出(checkout)和撤销(revert)
 
 ### 修复未提交文件中的错误(重置)
