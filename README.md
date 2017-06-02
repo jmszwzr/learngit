@@ -1,6 +1,6 @@
 ![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png "GitHub Mark")  
 <div align=center>
-<img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" style="width:30%;" /><br> 
+<img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" style="width:30%;" /><br>
 <img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" width="100" />
 </div>
 ![Git Logo](https://www.git-scm.com/images/logo@2x.png)
@@ -38,7 +38,7 @@
 ### <font color="#F44D27">获取Git仓库</font>
 	git init	在现有目录中初始化仓库
 	git init newrepo	对已存在的目录进行仓库初始化
-	
+
 	git add *.c		添加所有以.c结尾的文件
 	git add LICENSE
 	git commit -m 'initial project version'
@@ -73,16 +73,16 @@
 
 	# but do track lib.a, even though you're ignoring .a files above
 	!lib.a
-	
+
 	# only ignore the TODO file in the current directory, not subdir/TODO
 	/TODO
-	
+
 	# ignore all files in the build/ directory
 	build/
-	
+
 	# ignore doc/notes.txt, but not doc/server/arch.txt
 	doc/*.txt
-	
+
 	# ignore all .pdf files in the doc/ directory
 	doc/**/*.pdf
 #### 查看已暂存和未暂存的修改
@@ -126,11 +126,11 @@
 	-p 按补丁格式显示每个更新之间的差异。
 	--stat 显示每次更新的文件修改统计信息。
 	--shortstat 只显示 --stat 中最后的行数修改添加移除统计。
-	--name-only 仅在提交信息后显示已修改的文件清单。	
-	--name-status 显示新增、修改、删除的文件清单。	
-	--abbrev-commit 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。	
-	--relative-date 使用较短的相对时间显示（比如，“2 weeks ago”）。	
-	--graph 显示 ASCII 图形表示的分支合并历史。	
+	--name-only 仅在提交信息后显示已修改的文件清单。
+	--name-status 显示新增、修改、删除的文件清单。
+	--abbrev-commit 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。
+	--relative-date 使用较短的相对时间显示（比如，“2 weeks ago”）。
+	--graph 显示 ASCII 图形表示的分支合并历史。
 	--pretty 使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。
 #### 限制输出长度
 	git log --since=2.weeks		列出所有最近两周内的提交
@@ -151,7 +151,7 @@
 >>查看Git仓库中，2008年10月期间，Junio Hamano 提交的但未合并的测试文件
 
 ### <font color="#F44D27">撤销操作</font>
-	git add <file>	
+	git add <file>
 	git commit --amend	添加文件，尝试重新提交，并且调用自身的编辑器修改修改提交信息
 	git commit --amend -m <message>	直接对最后一次提交的信息进行修改
 
@@ -179,7 +179,7 @@
 	git push origin master:master	同上
 >只有当你有所克隆服务器的写入权限，并且之前没有人推送过时，这条命令才能生效。 当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先将他们的工作拉取下来并将其合并进你的工作后才能推送。 阅读 Git 分支 了解如何推送到远程仓库服务器的详细信息。
 #### 查看远程仓库
-	git remote show origin	
+	git remote show origin
 >- 它同样会列出远程仓库的 URL 与跟踪分支的信息。 这些信息非常有用，它告诉你正处于 master 分支，并且如果运行 git pull，就会抓取所有的远程引用，然后将远程 master 分支合并到本地 master 分支。 它也会列出拉取到的所有远程引用。  
 >
 - 这个命令列出了当你在特定的分支上执行 git push 会自动地推送到哪一个远程分支。 它也同样地列出了哪些远程分支不在你的本地，哪些远程分支已经从服务器上移除了，还有当你执行 git pull 时哪些分支会自动合并。
@@ -192,7 +192,7 @@
 	git tag		列出所有标签
 	git tag -l 'v1.8.5*'	列出1.8.5系列的版本
 #### 创建标签
->Git 使用两种主要类型的标签：轻量标签（lightweight）与附注标签（annotated）。一个轻量标签很像一个不会改变的分支 - 它只是一个特定提交的引用。然而，附注标签是存储在 Git 数据库中的一个完整对象。 它们是可以被校验的；其中包含打标签者的名字、电子邮件地址、日期时间；还有一个标签信息；并且可以使用 GNU Privacy Guard （GPG）签名与验证。 通常建议创建附注标签，这样你可以拥有以上所有信息；但是如果你只是想用一个临时的标签，或者因为某些原因不想要保存那些信息，轻量标签也是可用的。 
+>Git 使用两种主要类型的标签：轻量标签（lightweight）与附注标签（annotated）。一个轻量标签很像一个不会改变的分支 - 它只是一个特定提交的引用。然而，附注标签是存储在 Git 数据库中的一个完整对象。 它们是可以被校验的；其中包含打标签者的名字、电子邮件地址、日期时间；还有一个标签信息；并且可以使用 GNU Privacy Guard （GPG）签名与验证。 通常建议创建附注标签，这样你可以拥有以上所有信息；但是如果你只是想用一个临时的标签，或者因为某些原因不想要保存那些信息，轻量标签也是可用的。
 
 #### 附注标签
 	git tag -a v1.0 -m 'version 1.0'
@@ -213,7 +213,7 @@
 >在 Git 中你并不能真的检出一个标签，因为它们并不能像分支一样来回移动。 如果你想要工作目录与仓库中特定的标签版本完全一样，可以使用 git checkout -b [branchname] [tagname] 在特定的标签上创建一个新分支
 
 	git checkout -b version1.0 v1.0
-	
+
 ### <font color="#F44D27">Git别名</font>
 
 **常用别名参考**  
@@ -327,7 +327,7 @@
 	git branch -vv	统计最新的领先与落后数字
 
 #### 抓取
->
+
 - 当 git fetch 命令从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。 它只会获取数据然后让你自己合并。然而，有一个命令叫作 git pull 在大多数情况下它的含义是一个 git fetch 紧接着一个 git merge 命令。 如果有一个像之前章节中演示的设置好的跟踪分支，不管它是显式地设置还是通过 clone 或 checkout 命令为你创建的，git pull 都会查找当前
 - 分支所跟踪的服务器与分支，从服务器上抓取数据然后尝试合并入那个远程分支。
 - 由于 git pull 的魔法经常令人困惑所以通常单独显式地使用 fetch 与 merge 命令会更好一些。
@@ -343,7 +343,7 @@
 - 请注意，无论是通过变基，还是通过三方合并，整合的最终结果所指向的快照始终是一样的，只不过提交历史不同罢了。
 - 变基是将一系列提交按照原有次序依次应用到另一分支上，而合并是把最终结果合在一起。
 
-#### 变基的基本操作	
+#### 变基的基本操作
 	git checkout dev
 	git rebase master	以 master 所在的位置作为基底，将 dev 分支上的所有修改都移至 master 分支上
 	git checkout master		回到 master 分支，进行一次快进合并
@@ -374,7 +374,7 @@
 >变基操作的实质是丢弃一些现有的提交，然后相应地新建一些内容一样但实际上不同的提交。
 
 	git pull --rebase	此条命令同下面两条
-	
+
 	git fetch origin
 	git rebase origin/master
 >
@@ -451,5 +451,3 @@
 #### 查看提交简报
 	git shortlog --no-merges master --not v1.0	给出上次发布v1.0以来所有提交的总结，并且已经按照作者分好组
 	git shortlog --no-merges master --not a1beba6	给出自 a1beba6 提交以来的总结
-
-
