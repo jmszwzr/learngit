@@ -13,11 +13,6 @@
 #### 代码块
 	首行一个Tab键 or 四个空格
 
-#### 引入图片
-<img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" width="100" height="100" title="GitHub Mark" />  
-![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png "GitHub Mark")  
-![Mou icon](http://25.io/mou/Mou_128.png "Mou icon")
-
 #### 图片水平居中
 	<div align=center>
 	![]()
@@ -25,3 +20,9 @@
 
 ## test
 :+1:
+
+---------------
+
+## **资料阅读**
+
+- [Markdown 语法说明 (简体中文版)](http://www.appinn.com/markdown/)
