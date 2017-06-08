@@ -1,16 +1,16 @@
-![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png "GitHub Mark")  
+![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png "GitHub Mark")
 <div align=center>
-<img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" style="width:30%;" /><br> 
+<img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" style="width:30%;" /><br>
 <img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" title="GitHub Mark" width="100" />
 </div>
 ![Git Logo](https://www.git-scm.com/images/logo@2x.png)
 
-**学习资料**  
+**学习资料**
 
 - [**Git Community Book 中文版**](http://gitbook.liuhui998.com/)
 - [**Git常用命令速查表**](http://blog.devzeng.com/images/github_code_repository/Git_Cheat_Sheet.png)
 
-[**Public Git hosting sites**](https://git.wiki.kernel.org/index.php/GitHosting)  
+[**Public Git hosting sites**](https://git.wiki.kernel.org/index.php/GitHosting)
 
 ----------
 
@@ -38,7 +38,7 @@
 ### <font color="#F44D27">获取Git仓库</font>
 	git init	在现有目录中初始化仓库
 	git init newrepo	对已存在的目录进行仓库初始化
-	
+
 	git add *.c		添加所有以.c结尾的文件
 	git add LICENSE
 	git commit -m 'initial project version'
@@ -59,11 +59,11 @@
 
 **文件`.girignore`的格式规范如下：**
 
-- 所有空行或者以 ＃ 开头的行都会被 Git 忽略。  
-- 可以使用标准的 glob 模式匹配。  
-- 匹配模式可以以（/）开头防止递归。  
-- 匹配模式可以以（/）结尾指定目录。  
-- 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。  
+- 所有空行或者以 ＃ 开头的行都会被 Git 忽略。
+- 可以使用标准的 glob 模式匹配。
+- 匹配模式可以以（/）开头防止递归。
+- 匹配模式可以以（/）结尾指定目录。
+- 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。
 >所谓的 glob 模式是指 shell 所使用的简化了的正则表达式。 星号（*）匹配零个或多个任意字符；[abc] 匹配任何一个列在方括号中的字符（这个例子要么匹配一个 a，要么匹配一个 b，要么匹配一个 c）；问号（?）只匹配一个任意字符；如果在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如 [0-9] 表示匹配所有 0 到 9 的数字）。 使用两个星号（*) 表示匹配任意中间目录，比如`a/**/z` 可以匹配 a/z, a/b/z 或 `a/b/c/z`等。
 
 我们再看一个 .gitignore 文件的例子：
@@ -73,23 +73,23 @@
 
 	# but do track lib.a, even though you're ignoring .a files above
 	!lib.a
-	
+
 	# only ignore the TODO file in the current directory, not subdir/TODO
 	/TODO
-	
+
 	# ignore all files in the build/ directory
 	build/
-	
+
 	# ignore doc/notes.txt, but not doc/server/arch.txt
 	doc/*.txt
-	
+
 	# ignore all .pdf files in the doc/ directory
 	doc/**/*.pdf
 #### 查看已暂存和未暂存的修改
 	git diff 	比较工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化
 	git diff --cached	查看已暂存的将要添加到下次提交里的内容
 	git diff --staged	同上，Git 1.6.1 及更高版本允许使用
->Git Diff 的插件版本  
+>Git Diff 的插件版本
 在本书中，我们使用 git diff 来分析文件差异。 但是，如果你喜欢通过图形化的方式或其它格式输出方式的话，可以使用 git difftool 命令来用 Araxis ，emerge 或 vimdiff 等软件输出 diff 分析结果。 使用 git difftool --tool-help 命令来看你的系统支持哪些 Git Diff 插件。
 #### 跳过使用暂存区域
 	git commit -a -m 'description'	自动把所有已经跟踪过的文件暂存起来一起提交
@@ -100,9 +100,9 @@
 	git rm -f README.md		如果删除之前修改过并且已经放到暂存区域的话，则必须强制删除选项`-f`(译注：即force的首字母)
 	git rm --cached README.md	从Git仓库中删除(亦即从暂存区移除)，但人希望保留在当前工作目录中。（即文件仍存在磁盘上，但是Git不继续跟踪了）
 
->**使用glob模式删除文件**  
+>**使用glob模式删除文件**
 >
-- git rm log/\*.log	删除`log/`目录下扩展名为`.log`的所有文件  
+- git rm log/\*.log	删除`log/`目录下扩展名为`.log`的所有文件
 - git rm \*~	删除以`~`结尾的所有文件
 
 #### 移动文件
@@ -126,32 +126,32 @@
 	-p 按补丁格式显示每个更新之间的差异。
 	--stat 显示每次更新的文件修改统计信息。
 	--shortstat 只显示 --stat 中最后的行数修改添加移除统计。
-	--name-only 仅在提交信息后显示已修改的文件清单。	
-	--name-status 显示新增、修改、删除的文件清单。	
-	--abbrev-commit 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。	
-	--relative-date 使用较短的相对时间显示（比如，“2 weeks ago”）。	
-	--graph 显示 ASCII 图形表示的分支合并历史。	
+	--name-only 仅在提交信息后显示已修改的文件清单。
+	--name-status 显示新增、修改、删除的文件清单。
+	--abbrev-commit 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。
+	--relative-date 使用较短的相对时间显示（比如，“2 weeks ago”）。
+	--graph 显示 ASCII 图形表示的分支合并历史。
 	--pretty 使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。
 #### 限制输出长度
 	git log --since=2.weeks		列出所有最近两周内的提交
 	git log -Sfunction_name		找出添加或移除某一个特定函数的引用的提交
->**限制 git log 输出的选项**  
+>**限制 git log 输出的选项**
 >
-- -(n) 仅显示最近的 n 条提交  
-- --since, --after 仅显示指定时间之后的提交。  
-- --until, --before 仅显示指定时间之前的提交。  
-- --author 仅显示指定作者相关的提交。  
-- --committer 仅显示指定提交者相关的提交。  
-- --grep 仅显示含指定关键字的提交  
-- -S 仅显示添加或移除了某个关键字的提交  
+- -(n) 仅显示最近的 n 条提交
+- --since, --after 仅显示指定时间之后的提交。
+- --until, --before 仅显示指定时间之前的提交。
+- --author 仅显示指定作者相关的提交。
+- --committer 仅显示指定提交者相关的提交。
+- --grep 仅显示含指定关键字的提交
+- -S 仅显示添加或移除了某个关键字的提交
 >
->>**例子**  
+>>**例子**
 >>git log --pretty="%h - %s" --author=gitster --since="2008-10-01" \
-   --before="2008-11-01" --no-merges -- t/  
+   --before="2008-11-01" --no-merges -- t/
 >>查看Git仓库中，2008年10月期间，Junio Hamano 提交的但未合并的测试文件
 
 ### <font color="#F44D27">撤销操作</font>
-	git add <file>	
+	git add <file>
 	git commit --amend	添加文件，尝试重新提交，并且调用自身的编辑器修改修改提交信息
 	git commit --amend -m <message>	直接对最后一次提交的信息进行修改
 
@@ -160,7 +160,7 @@
 
 	git reset HEAD <file>	取消暂存文件
 	git checkout -- <file>	撤销文件所做的修改
->**Important**  
+>**Important**
 >你需要知道 git checkout -- [file] 是一个危险的命令，这很重要。 你对那个文件做的任何修改都会消失 - 你只是拷贝了另一个文件来覆盖它。 除非你确实清楚不想要那个文件了，否则不要使用这个命令。
 
 ### <font color="#F44D27">远程仓库的使用</font>
@@ -179,8 +179,8 @@
 	git push origin master:master	同上
 >只有当你有所克隆服务器的写入权限，并且之前没有人推送过时，这条命令才能生效。 当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先将他们的工作拉取下来并将其合并进你的工作后才能推送。 阅读 Git 分支 了解如何推送到远程仓库服务器的详细信息。
 #### 查看远程仓库
-	git remote show origin	
->- 它同样会列出远程仓库的 URL 与跟踪分支的信息。 这些信息非常有用，它告诉你正处于 master 分支，并且如果运行 git pull，就会抓取所有的远程引用，然后将远程 master 分支合并到本地 master 分支。 它也会列出拉取到的所有远程引用。  
+	git remote show origin
+>- 它同样会列出远程仓库的 URL 与跟踪分支的信息。 这些信息非常有用，它告诉你正处于 master 分支，并且如果运行 git pull，就会抓取所有的远程引用，然后将远程 master 分支合并到本地 master 分支。 它也会列出拉取到的所有远程引用。
 >
 - 这个命令列出了当你在特定的分支上执行 git push 会自动地推送到哪一个远程分支。 它也同样地列出了哪些远程分支不在你的本地，哪些远程分支已经从服务器上移除了，还有当你执行 git pull 时哪些分支会自动合并。
 #### 远程仓库的移除与重命名
@@ -192,7 +192,7 @@
 	git tag		列出所有标签
 	git tag -l 'v1.8.5*'	列出1.8.5系列的版本
 #### 创建标签
->Git 使用两种主要类型的标签：轻量标签（lightweight）与附注标签（annotated）。一个轻量标签很像一个不会改变的分支 - 它只是一个特定提交的引用。然而，附注标签是存储在 Git 数据库中的一个完整对象。 它们是可以被校验的；其中包含打标签者的名字、电子邮件地址、日期时间；还有一个标签信息；并且可以使用 GNU Privacy Guard （GPG）签名与验证。 通常建议创建附注标签，这样你可以拥有以上所有信息；但是如果你只是想用一个临时的标签，或者因为某些原因不想要保存那些信息，轻量标签也是可用的。 
+>Git 使用两种主要类型的标签：轻量标签（lightweight）与附注标签（annotated）。一个轻量标签很像一个不会改变的分支 - 它只是一个特定提交的引用。然而，附注标签是存储在 Git 数据库中的一个完整对象。 它们是可以被校验的；其中包含打标签者的名字、电子邮件地址、日期时间；还有一个标签信息；并且可以使用 GNU Privacy Guard （GPG）签名与验证。 通常建议创建附注标签，这样你可以拥有以上所有信息；但是如果你只是想用一个临时的标签，或者因为某些原因不想要保存那些信息，轻量标签也是可用的。
 
 #### 附注标签
 	git tag -a v1.0 -m 'version 1.0'
@@ -213,10 +213,10 @@
 >在 Git 中你并不能真的检出一个标签，因为它们并不能像分支一样来回移动。 如果你想要工作目录与仓库中特定的标签版本完全一样，可以使用 git checkout -b [branchname] [tagname] 在特定的标签上创建一个新分支
 
 	git checkout -b version1.0 v1.0
-	
+
 ### <font color="#F44D27">Git别名</font>
 
-**常用别名参考**  
+**常用别名参考**
 
 	git config --global alias.ss status
 >**[alias]**
@@ -245,25 +245,25 @@
 - 在进行提交操作时，Git 会保存一个提交对象（commit object）。该提交对象会包含一个指向暂存内容快照的指针。该提交对象还包含了作者的姓名和邮箱、提交时输入的信息以及指向它的父对象的指针
 - 首次提交产生的提交对象没有父对象，普通提交操作产生的提交对象有一个父对象，而由多个分支合并产生的提交对象有多个父对象
 
-	git branch 查看本地分支  
-	git branch -a 查看所有本地分支和远程分支  
+	git branch 查看本地分支
+	git branch -a 查看所有本地分支和远程分支
 	git branch -r Markdown中如何空格
 
 ### HEAD
-- ***HEAD*** 指向当前所在的分支  
+- ***HEAD*** 指向当前所在的分支
 - ***HEAD*** 分支随着提交操作自动向前移动
 ### 分支创建
-	git branch dev 在当前提交的对象上创建一个分支(HEAD仍然指向master)  
+	git branch dev 在当前提交的对象上创建一个分支(HEAD仍然指向master)
 
 ### 分支切换
 	git checkout dev 切换到dev分支上(HEAD指向了dev分支)
-	git checkout -b dev 创建并切换到刚创建的dev分支上  
+	git checkout -b dev 创建并切换到刚创建的dev分支上
 ### 分支历史
 	git log --oneline --reverse --decorate 查看各个分支当前所指的对象
-	git log --oneline --decorate --graph --all 查看提交历史、各个分支的指向以及项目的分支分叉情况  
+	git log --oneline --decorate --graph --all 查看提交历史、各个分支的指向以及项目的分支分叉情况
 
 ### <font color="#F44D27">分支的创建与合并</font>
->由于这部分非常重要，请穿越阅读  
+>由于这部分非常重要，请穿越阅读
 
 [**分支的创建与合并**](https://www.git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6)
 
@@ -289,11 +289,11 @@
 - **远程引用**是对远程仓库的引用（指针），包括分支、标签等等。 你可以通过 git ls-remote (remote) 来显式地获得远程引用的完整列表，或者通过 git remote show (remote) 获得远程分支的更多信息。 然而，一个更常见的做法是利用远程跟踪分支。
 - **远程跟踪分支**是远程分支状态的引用。 它们是你不能移动的本地引用，当你做任何网络通信操作时，它们会自动移动。 远程跟踪分支像是你上次连接到远程仓库时，那些分支所处状态的书签。它们以 (remote)/(branch) 形式命名。
 - 例子：假设你的网络里有一个在 git.ourcompany.com 的 Git 服务器。 如果你从这里克隆，Git 的 clone 命令会为你自动将其命名为 origin，拉取它的所有数据，创建一个指向它的 master 分支的指针，并且在本地将其命名为 origin/master。 Git 也会给你一个与 origin 的 master 分支在指向同一个地方的本地 master 分支，这样你就有工作的基础。
-- “origin” 并无特殊含义  
+- “origin” 并无特殊含义
 远程仓库名字 “origin” 与分支名字 “master” 一样，在 Git 中并没有任何特别的含义一样。 同时 “master” 是当你运行 git init 时默认的起始分支名字，原因仅仅是它的广泛使用，“origin” 是当你运行 git clone 时默认的远程仓库名字。 如果你运行 git clone -o booyah，那么你默认的远程分支名字将会是 booyah/master。　　
 
 	git fetch origin　
->这个命令查找 “origin” 是哪一个服务器（在本例中，它是 git.ourcompany.com），从中抓取本地没有的数据，并且更新本地数据库，移动 origin/master 指针指向新的、更新后的位置。   
+>这个命令查找 “origin” 是哪一个服务器（在本例中，它是 git.ourcompany.com），从中抓取本地没有的数据，并且更新本地数据库，移动 origin/master 指针指向新的、更新后的位置。
 ![remote -branch](https://www.git-scm.com/book/en/v2/images/remote-branches-3.png)
 
 #### 推送
@@ -318,7 +318,7 @@
 - 设置已有的本地分支跟踪一个刚刚拉取下来的远程分支，或者想要修改正在跟踪的上游分支，你可以在任意时间使用 -u(--set-upstream 的简写) 或 --set-upstream-to 选项运行 git branch 来显式地设置。
 
 >
-上游快捷方式  
+上游快捷方式
 当设置好跟踪分支后，可以通过 @{upstream} 或 @{u} 快捷方式来引用它。 所以在 master 分支时并且它正在跟踪 origin/master 时，如果愿意的话可以使用 git merge @{u} 来取代 git merge origin/master。
 
 	git branch -vv	查看本地设置的所有跟踪分支。这会将所有的本地分支列出来并且包含更多的信息，如每一个分支正在跟踪哪个远程分支与本地分支是否是领先、落后或是都有。
@@ -343,7 +343,7 @@
 - 请注意，无论是通过变基，还是通过三方合并，整合的最终结果所指向的快照始终是一样的，只不过提交历史不同罢了。
 - 变基是将一系列提交按照原有次序依次应用到另一分支上，而合并是把最终结果合在一起。
 
-#### 变基的基本操作	
+#### 变基的基本操作
 	git checkout dev
 	git rebase master	以 master 所在的位置作为基底，将 dev 分支上的所有修改都移至 master 分支上
 	git checkout master		回到 master 分支，进行一次快进合并
@@ -355,11 +355,11 @@
 #### 更有趣的变基例子
 	git rebase --onto master server client
 >
-以上命令的意思是：“取出 client 分支，找出处于 client 分支和 server 分支的共同祖先之后的修改，然后把它们在 master 分支上重放一遍”。 这理解起来有一点复杂，不过效果非常酷。  
+以上命令的意思是：“取出 client 分支，找出处于 client 分支和 server 分支的共同祖先之后的修改，然后把它们在 master 分支上重放一遍”。 这理解起来有一点复杂，不过效果非常酷。
 
 	git checkout master
 	git merge client
->截取特性分支上的另一个特性分支，然后变基到其他分支,现在可以快进合并 master 分支了。快进合并 master 分支，使之包含来自 client 分支的修改  
+>截取特性分支上的另一个特性分支，然后变基到其他分支,现在可以快进合并 master 分支了。快进合并 master 分支，使之包含来自 client 分支的修改
 
 	git rebase master server
 	git checkout master
@@ -374,12 +374,12 @@
 >变基操作的实质是丢弃一些现有的提交，然后相应地新建一些内容一样但实际上不同的提交。
 
 	git pull --rebase	此条命令同下面两条
-	
+
 	git fetch origin
 	git rebase origin/master
 >
-- 如果你习惯使用 git pull ，同时又希望默认使用选项 --rebase，你可以执行这条语句 git config --global pull.rebase true 来更改 pull.rebase 的默认配置。  
-- 只要你把变基命令当作是在推送前清理提交使之整洁的工具，并且只在从未推送至共用仓库的提交上执行变基命令，就不会有事。 假如在那些已经被推送至共用仓库的提交上执行变基命令，并因此丢弃了一些别人的开发所基于的提交，那你就有大麻烦了，你的同事也会因此鄙视你。  
+- 如果你习惯使用 git pull ，同时又希望默认使用选项 --rebase，你可以执行这条语句 git config --global pull.rebase true 来更改 pull.rebase 的默认配置。
+- 只要你把变基命令当作是在推送前清理提交使之整洁的工具，并且只在从未推送至共用仓库的提交上执行变基命令，就不会有事。 假如在那些已经被推送至共用仓库的提交上执行变基命令，并因此丢弃了一些别人的开发所基于的提交，那你就有大麻烦了，你的同事也会因此鄙视你。
 - 如果你或你的同事在某些情形下决意要这么做，请一定要通知每个人执行 git pull --rebase 命令，这样尽管不能避免伤痛，但能有所缓解。
 
 #### 变基 vs 合并
@@ -398,7 +398,7 @@
 	git diff --check	提交前，运行它，它将会找到可能的空白错误并将它们为你理列出来
 
 #### 私有小型团队
-![一个简单的多人 Git 工作流程的通常事件顺序](https://www.git-scm.com/book/en/v2/images/small-team-flow.png)  
+![一个简单的多人 Git 工作流程的通常事件顺序](https://www.git-scm.com/book/en/v2/images/small-team-flow.png)
 
 #### 私有管理团队
 ![管理团队工作流程的基本顺序](https://www.git-scm.com/book/en/v2/images/managed-team-flow.png)
@@ -435,7 +435,7 @@
 >只希望分支上的 e43a6 拉取到 master 分支，而不希望拉取 e43a6 之后的提交
 
 #### Rerere
->Rerere 是“重用已记录的冲突解决方案（reuse recorded resolution）”的意思——它是一种简化冲突解决的方法。 当启用 rerere 时，Git 将会维护一些成功合并之前和之后的镜像，当 Git 发现之前已经修复过类似的冲突时，便会使用之前的修复方案，而不需要你的干预。  
+>Rerere 是“重用已记录的冲突解决方案（reuse recorded resolution）”的意思——它是一种简化冲突解决的方法。 当启用 rerere 时，Git 将会维护一些成功合并之前和之后的镜像，当 Git 发现之前已经修复过类似的冲突时，便会使用之前的修复方案，而不需要你的干预。
 
 	git config --global rerere.enabled true 现在每当你进行一次需要解决冲突的合并时，解决方案都会被记录在缓存中，以备之后使用
 
@@ -447,9 +447,6 @@
 	git archive master --prefix='project/' | gzip > `git describe master`.tar.gz
 
 	git archive master --prefix='project/' --format=zip > `git describe master`.zip	创建一个 zip 压缩包
-
 #### 查看提交简报
 	git shortlog --no-merges master --not v1.0	给出上次发布v1.0以来所有提交的总结，并且已经按照作者分好组
 	git shortlog --no-merges master --not a1beba6	给出自 a1beba6 提交以来的总结
-
-
