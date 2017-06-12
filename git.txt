@@ -20,6 +20,8 @@
 ===========================  push  ===========================
 
 1、git push -f os master  #强制推送本地至远程仓库（如发生推送超时，检查端口是否被防火墙拦截）
+2、git push --set-upstream origin master
+        #当有多个git远程仓库地址时，用此命令重新将当前的master分支与指定的远程仓库的分支进行关联
 
 
 ===========================  fetch  ===========================
@@ -122,5 +124,3 @@ git ls-remote --tags [origin]	#查询远程所有的tags
 git ls-remote origin			#查询远程的heads和tags
 
 git show-ref --tag 				#查询远程所有的tags[有时候不准确]
-
-
