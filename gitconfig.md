@@ -2,9 +2,9 @@
 
 > 罗列出自己个人的一些操作习惯
 
-[color]
+[color]  
 	ui = true
-[alias]
+[alias]  
 	ss = status
 	cc = checkout
 	mm = commit
