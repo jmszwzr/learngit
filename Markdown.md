@@ -61,3 +61,4 @@ $$
 
 - [Markdown 语法说明 (简体中文版)](http://www.appinn.com/markdown/)
 - [Markdown - 简单的世界](https://wizardforcel.gitbooks.io/markdown-simple-world/content/index.html)
+- [Markdown 语法和 MWeb 写作使用说明](http://zh.mweb.im/markdown-syntax-guide-suggest-version-zh.html)
