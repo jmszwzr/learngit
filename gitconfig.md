@@ -2,7 +2,13 @@
 
 > 罗列出自己个人的一些操作习惯
 
+[core]
+
+	autocrlf = false
+	# 使用`git status`是出现的中文乱码，也可使用命令`git config --global core.quotepath false`
+	quotepath = false
 [color]  
+
 	ui = true  
 [alias]  
 	ss = status  
