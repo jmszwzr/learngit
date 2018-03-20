@@ -4,6 +4,8 @@
 2、ssh -T git@git.oschina.net 		#测试是否连接成功,输入yes后,终端提示 `Welcome to Git@OSC, xxx!` 说明连接成功
    ssh -T git@github.com
    ssh -T git@git.coding.net
+   ssh -T git@code.aliyun.com
+
 ===========================  branch  ===========================
 
 0、git branch      #查询本地存在的branch
