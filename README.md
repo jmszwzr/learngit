@@ -16,6 +16,17 @@
 
 # Git学习和使用
 
+## 生成私钥/公钥
+ssh-keygen -t rsa
+
+## 在所在网站添加公钥
+> 以下列出的是各大Git服务器的测试命令，测试是否连接成功，输入yes之后，终端提示'Welcome to xxx'，说明连接成功。
+
+    ssh -T git@git.oschina.net
+    ssh -T git@github.com
+    ssh -T git@git.coding.net
+    ssh -T git@code.aliyun.com
+
 ## 用户信息
 ### 设置
 	git config --global user.name "John Doe"	设置全局用户名
@@ -31,18 +42,18 @@
 ## 获取帮助
 	git help <verb>
 	git <verb> --help
-
+	
 	git help config		获取config命令的手册
 
 ## Git基础
 ### <font color="#F44D27">获取Git仓库</font>
 	git init	在现有目录中初始化仓库
 	git init newrepo	对已存在的目录进行仓库初始化
-
+	
 	git add *.c		添加所有以.c结尾的文件
 	git add LICENSE
 	git commit -m 'initial project version'
-
+	
 	git clone [url]		克隆现有仓库
 	git clone [url] [rename]	自定义本地仓库的名字
 ### <font color="#F44D27">记录每次更新到仓库</font>
@@ -70,19 +81,19 @@
 
 	# no .a files
 	*.a
-
+	
 	# but do track lib.a, even though you're ignoring .a files above
 	!lib.a
-
+	
 	# only ignore the TODO file in the current directory, not subdir/TODO
 	/TODO
-
+	
 	# ignore all files in the build/ directory
 	build/
-
+	
 	# ignore doc/notes.txt, but not doc/server/arch.txt
 	doc/*.txt
-
+	
 	# ignore all .pdf files in the doc/ directory
 	doc/**/*.pdf
 #### 查看已暂存和未暂存的修改
@@ -107,7 +118,7 @@
 
 #### 移动文件
 	git mv file_from file_to	Git中对文件改名，相当于下面三条命令
-
+	
 	mv file_from file_to
 	git rm file_from
 	git add file_to
@@ -154,10 +165,10 @@
 	git add <file>
 	git commit --amend	添加文件，尝试重新提交，并且调用自身的编辑器修改修改提交信息
 	git commit --amend -m <message>	直接对最后一次提交的信息进行修改
-
+	
 	git reset --soft HEAD^	回退到最后一次提交前的状态，已add未commit
 	git commit -m <message>	重新提交即可修改因最后一次提交写错的描述信息
-
+	
 	git reset HEAD <file>	取消暂存文件
 	git checkout -- <file>	撤销文件所做的修改
 >**Important**
@@ -276,7 +287,7 @@
 	git branch --no-merged	查看所有包含未合并工作的分支
 	git branch -d dev	删除已经合并到当前HEAD上的dev分支
 	git branch -D dev	强制删除dev分支并丢掉那些工作
-
+	
 	git remote prune origin	删除在远程仓库中已经不存在的分支
 ### <font color="#F44D27">分支开发工作流</font>
 
@@ -369,12 +380,13 @@
 
 #### 变基的风险
 >**遵守一条准则**
+>
 >>- 不要对在你的仓库外有副本的分支执行变基。
 
 >变基操作的实质是丢弃一些现有的提交，然后相应地新建一些内容一样但实际上不同的提交。
 
 	git pull --rebase	此条命令同下面两条
-
+	
 	git fetch origin
 	git rebase origin/master
 >
@@ -413,7 +425,7 @@
 	git remote add jessica git://github.com/jessica/myproject.git
 	git fetch jessica
 	git checkout -b rubyclient jessica/ruby-client
-
+	
 	git pull https://github.com/onetimeguy/project 执行一个一次性的抓取，而不会将该 URL 存为远程引用
 
 #### 确定引入了哪些东西
@@ -424,7 +436,7 @@
 	git merge-base contrib master	手工找出contrib与master的公共祖先
 	36c7dba2c95e6bbb78dfa822519ecfec6e1ca649
 	git diff 36c7db
-
+	
 	git diff master...contrib	作用同上
 >
 - 三点语法。 对于 diff 命令来说，你可以通过把 ... 置于另一个分支名后来对该分支的最新提交与两个分支的共同祖先进行比较
@@ -445,7 +457,7 @@
 
 #### 准备一次发布
 	git archive master --prefix='project/' | gzip > `git describe master`.tar.gz
-
+	
 	git archive master --prefix='project/' --format=zip > `git describe master`.zip	创建一个 zip 压缩包
 #### 查看提交简报
 	git shortlog --no-merges master --not v1.0	给出上次发布v1.0以来所有提交的总结，并且已经按照作者分好组
